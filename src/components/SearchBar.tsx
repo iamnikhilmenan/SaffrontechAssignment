@@ -27,19 +27,22 @@ export default function SearchBar({
       <TextInput
         value={searchText}
         placeholder="Search Here..."
+        placeholderTextColor={THEME.COLORS.black}
         onChangeText={(text: string) => setSearchText(text)}
         onSubmitEditing={onSearchHandler}
+        style={{color: THEME.COLORS.black, fontWeight: '400'}}
       />
       {searchText === '' ? (
         <TouchableOpacity onPress={onSearchHandler}>
           <Image
             source={require('../assets/images/searchIcon.png')}
             style={styles.searchIcon}
+            tintColor={THEME.COLORS.black}
           />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity onPress={() => setSearchText('')}>
-          <Icon name="close-a" size={24} color={THEME.COLORS.grey} />
+          <Icon name="close-a" size={16} color={THEME.COLORS.black} />
         </TouchableOpacity>
       )}
     </View>
@@ -48,7 +51,7 @@ export default function SearchBar({
 
 const styles = StyleSheet.create({
   searchBarContainer: {
-    backgroundColor: THEME.COLORS.white,
+    backgroundColor: THEME.COLORS.primaryBlue,
     paddingHorizontal: THEME.SIZE.default / 5,
     borderRadius: THEME.SIZE.default / 2,
     elevation: 5,

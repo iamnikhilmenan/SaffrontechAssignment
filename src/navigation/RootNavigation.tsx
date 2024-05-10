@@ -9,7 +9,11 @@ const Stack = createStackNavigator();
 export default function RootNavigation(): ReactElement {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="BottomBar">
+      <Stack.Navigator
+        initialRouteName="BottomBar"
+        screenOptions={{
+          headerShown: false,
+        }}>
         <Stack.Screen name="BottomBar" component={BottomBarNavigation} />
         <Stack.Screen name="BookDetailsScreen" component={BookDetailsScreen} />
       </Stack.Navigator>

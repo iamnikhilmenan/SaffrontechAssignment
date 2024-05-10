@@ -4,6 +4,8 @@ interface ThemeColors {
   black: string;
   white: string;
   grey: string;
+  primaryBlue: string;
+  secondaryBlue: string;
 }
 
 interface ThemeSize {
@@ -28,6 +30,8 @@ const THEME: Theme = {
     black: '#000',
     white: '#fff',
     grey: '#808080',
+    primaryBlue: '#F0F8FF',
+    secondaryBlue: '#0047AB',
   },
   SIZE: {
     default: 100.0,

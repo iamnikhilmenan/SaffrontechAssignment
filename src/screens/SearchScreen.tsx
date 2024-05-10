@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Keyboard} from 'react-native';
-import SearchBar from '../components/SearchBar';
-import BookList from '../components/BookList';
-import THEME from '../config/Theme';
 import axios from 'axios';
 import {ActivityIndicator} from 'react-native-paper';
+import BookList from '../components/BookList';
+import SearchBar from '../components/SearchBar';
+import THEME from '../config/Theme';
 
 type searchScreenTypes = {};
 
@@ -20,9 +20,8 @@ type Book = {
 };
 
 export default function SearchScreen({}: searchScreenTypes): React.JSX.Element {
-  const [searchText, setSearchText] = useState<string>('');
   const [data, setData] = useState<Book[]>([]);
-  const [err, setErr] = useState<string>('');
+  const [searchText, setSearchText] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getBooksData = async (searchText: string) => {
@@ -35,7 +34,7 @@ export default function SearchScreen({}: searchScreenTypes): React.JSX.Element {
         setData(res?.data?.items);
       }
     } catch (error) {
-      setErr(error?.message);
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -56,7 +55,11 @@ export default function SearchScreen({}: searchScreenTypes): React.JSX.Element {
         />
       </View>
       <View style={styles.bookListContainer}>
-        {isLoading ? <ActivityIndicator /> : <BookList booksData={data} />}
+        {isLoading ? (
+          <ActivityIndicator />
+        ) : (
+          <BookList booksData={data} pathName="" />
+        )}
       </View>
     </View>
   );
